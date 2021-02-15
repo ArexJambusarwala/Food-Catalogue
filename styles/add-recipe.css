@@ -75,12 +75,23 @@ textarea {
     color: crimson;
 }
 
+#input-image-help {
+    color: crimson;
+    display: none;
+    font-weight: lighter;
+}
+
 .uploaded-image {
     width: 15em;
     height: 15em;
     object-fit: cover;
     margin: 1em;
     margin-left: 0;
+}
+
+.uploaded-image:hover {
+    opacity: 0.3;
+    cursor: pointer;
 }
 
 #uploaded-image-new {

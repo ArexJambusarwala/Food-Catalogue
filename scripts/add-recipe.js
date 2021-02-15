@@ -1,4 +1,4 @@
-let uploadedImages = [], thumbnailId = 0, selectedIngredients = [];
+let uploadedImages = [], selectedIngredients = [];
 
 document.getElementById("uploaded-image-new").addEventListener("click", () => {
     document.getElementById("images").click();
@@ -13,6 +13,7 @@ function uploadImages(target) {
         }
         reader.readAsDataURL(file);
     }
+    target.value = "";
 }
 
 function addToArray(target) {
@@ -20,7 +21,15 @@ function addToArray(target) {
     let image = document.createElement("img");
     image.setAttribute("src", target.result);
     image.setAttribute("class", "uploaded-image");
+    image.setAttribute("id", uploadedImages.length - 1);
+    image.addEventListener("click", (event) => {
+        uploadedImages.splice(parseInt(event.target.id), 1);
+        event.target.remove();
+        if(!uploadedImages.length)
+            document.getElementById("input-image-help").style.display = "none";
+    });
     document.getElementById("uploaded-images-container").prepend(image);
+    document.getElementById("input-image-help").style.display = "inline";
 }
 
 function showOptions(target) {
