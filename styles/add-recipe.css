@@ -1,0 +1,109 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: antiquewhite;
+    height: 100%;
+    margin: 0;
+}
+
+#header {
+    height: 15%;
+    width: 100%;
+    background-color: antiquewhite;
+}
+
+#form-container {
+    width: 73%;
+    padding-right: 1%;
+    padding-left: 1%;
+    margin: auto;
+}
+
+.field-wrapper input[type="text"] {
+    min-width: 40%;
+    font-size: 140%;
+    padding: 1%;
+    border-radius: 5px;
+}
+
+.labels {
+    font-size: 140%;
+    display: block;
+    margin-bottom: 0.5%;
+}
+
+#list-of-ingredients {
+    width: 32.6%;
+    border-bottom: 0;
+    max-height: 30%;
+    z-index: 1;
+    position: absolute;
+}
+
+.ingredient-select-button {
+    text-align: start;
+    cursor: pointer;
+    width: 95%;
+    border-bottom: rgba(0, 0, 0, 0.3) 1px solid;
+    font-size: 120%;
+    min-height: 1.9em;
+}
+
+.ingredient-select-button:hover {
+    background-color: gainsboro;
+}
+
+.ingredient-selected-button {
+    background-color: antiquewhite;
+    font-size: 140%;
+    border-radius: 5px;
+    padding: 1%;
+    cursor: pointer;
+}
+
+textarea {
+    min-width: 60%;
+    font-size: 140%;
+    padding: 1%;
+    border-radius: 5px;
+}
+
+.mandatory-field {
+    color: crimson;
+}
+
+.uploaded-image {
+    width: 15em;
+    height: 15em;
+    object-fit: cover;
+    margin: 1em;
+    margin-left: 0;
+}
+
+#uploaded-images-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#selection-error {
+    color: red;
+    display: none;
+}
+
+input[name="images"] {
+    font-size: 120%;
+}
+
+input[type="submit"] {
+    background-color: darkred;
+    color: antiquewhite;
+    font-size: 140%;
+    border-radius: 5px;
+    padding: 1%;
+    cursor: pointer;
+    width: 20%;
+    border: none;
+}

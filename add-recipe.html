@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Arex Jambusarwala">
+        <meta name="description" content="Search and share delicious food recipes">
+        <title>Food catalogue - Add recipe</title>
+        <link rel="icon" href="assets/favicon.ico">
+        <link rel="stylesheet" href="styles/add-recipe.css">
+    </head>
+    <body>
+        <div id="header">s</div>
+        <br><br>
+        <div id="form-container">
+            <form action="index.html" onsubmit="validateForm()">
+                <div class="field-wrapper">
+                    <label for="username" class="labels">Username 
+                        <span class="mandatory-field" title="Mandotory field">*</span>
+                    </label>
+                    <input type="text" id="username">
+                </div>
+                <br>
+                <div class="field-wrapper">
+                    <label for="foodItem" class="labels">Name of your dish 
+                        <span class="mandatory-field" title="Mandotory field">*</span>
+                    </label>
+                    <input type="text" id="foodItem">
+                </div>
+                <br>
+                <div class="field-wrapper">
+                    <label for="ingredients" class="labels">Select or add new ingredients
+                        <span class="mandatory-field" title="Mandotory field">*</span>
+                    </label>
+                    <input type="text" id="ingredients" onkeyup="showOptions(this)" autocomplete="off">
+                    <span id="selected-ingredients"></span>
+                    <br>
+                    <div id="list-of-ingredients"></div>
+                </div>
+                <br>
+                <div id="recipe-wrapper" class="field-wrapper">
+                    <label for="recipe" class="labels">Recipe 
+                        <span class="mandatory-field" title="Mandotory field">*</span></label>
+                    <textarea id="recipe" rows="8"></textarea>
+                </div>
+                <br>
+                <div class="field-wrapper">
+                    <label for="images" class="labels">Upload Images</label>
+                    <input type="file" name="images" id="images" accept="image/*" multiple onchange="uploadImages(this)">
+                    <br>
+                    <div id="uploaded-images-container"></div>
+                </div>
+                <br>
+                <div id="comments-wrapper" class="field-wrapper">
+                    <label for="comments" class="labels">Comments</label>
+                    <textarea id="comments" rows="4"></textarea>
+                </div>
+                <br>
+                <input type="submit">
+            </form>
+        </div>
+        <br><br>
+        <script src="scripts/add-recipe.js"></script>
+        <script src="scripts/recipes.js"></script>
+    </body>
+</html>
