@@ -1,5 +1,9 @@
 let uploadedImages = [], thumbnailId = 0, selectedIngredients = [];
 
+document.getElementById("uploaded-image-new").addEventListener("click", () => {
+    document.getElementById("images").click();
+});
+
 function uploadImages(target) {
     const files = target.files;
     let reader = new FileReader();
@@ -16,7 +20,7 @@ function addToArray(target) {
     let image = document.createElement("img");
     image.setAttribute("src", target.result);
     image.setAttribute("class", "uploaded-image");
-    document.getElementById("uploaded-images-container").appendChild(image);
+    document.getElementById("uploaded-images-container").prepend(image);
 }
 
 function showOptions(target) {

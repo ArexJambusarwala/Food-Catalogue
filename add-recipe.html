@@ -13,7 +13,7 @@
         <div id="header">s</div>
         <br><br>
         <div id="form-container">
-            <form action="index.html" onsubmit="validateForm()">
+            <form action="index.html">
                 <div class="field-wrapper">
                     <label for="username" class="labels">Username 
                         <span class="mandatory-field" title="Mandotory field">*</span>
@@ -46,9 +46,11 @@
                 <br>
                 <div class="field-wrapper">
                     <label for="images" class="labels">Upload Images</label>
-                    <input type="file" name="images" id="images" accept="image/*" multiple onchange="uploadImages(this)">
+                    <input type="file" name="images" id="images" accept="image/*" onchange="uploadImages(this)">
                     <br>
-                    <div id="uploaded-images-container"></div>
+                    <div id="uploaded-images-container">
+                        <span id="uploaded-image-new">Click here to upload</span>
+                    </div>
                 </div>
                 <br>
                 <div id="comments-wrapper" class="field-wrapper">

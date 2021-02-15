@@ -83,6 +83,23 @@ textarea {
     margin-left: 0;
 }
 
+#uploaded-image-new {
+    display: flex;
+    margin: 0.5em;
+    margin-left: 0;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 7.5em;
+    text-align: center;
+    height: 7.5em;
+    font-size: 200%;
+    border-radius: 5px;
+    border: white 2px solid;
+    color: white;
+}
+
 #uploaded-images-container {
     display: flex;
     flex-wrap: wrap;
@@ -94,7 +111,8 @@ textarea {
 }
 
 input[name="images"] {
-    font-size: 120%;
+    height: 1px;
+    visibility: hidden;
 }
 
 input[type="submit"] {
