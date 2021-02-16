@@ -3,7 +3,7 @@
     const numberOfCarouselImages = carouselImages.length, totalTime = numberOfCarouselImages * 5;
     for(let i=0; i<numberOfCarouselImages; i++) {
         carouselImages[i].style.animation = `carousel ${totalTime}s infinite`;
-        carouselImages[i].style.animationDelay = `${i*4.5}s`;
+        carouselImages[i].style.animationDelay = `${i*5}s`;
     }
     setTimeout(setCarouselAnimation, 13501);
 })();
