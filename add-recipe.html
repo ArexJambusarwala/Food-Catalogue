@@ -10,45 +10,45 @@
         <link rel="stylesheet" href="styles/add-recipe.css">
     </head>
     <body>
-        <div id="header">s</div>
+        <div id="header"></div>
         <br><br>
         <div id="form-container">
             <form onsubmit="return false">
                 <div class="field-wrapper">
-                    <label for="username" class="labels">Username 
+                    <label for="username" class="label">Username 
                         <span class="mandatory-field" title="Mandotory field">*</span>
                     </label>
                     <input type="text" id="username">
                 </div>
                 <br>
                 <div class="field-wrapper">
-                    <label for="foodItem" class="labels">Name of your dish 
+                    <label for="foodItem" class="label">Name of your dish 
                         <span class="mandatory-field" title="Mandotory field">*</span>
                     </label>
                     <input type="text" id="foodItem">
                 </div>
                 <br>
                 <div class="field-wrapper">
-                    <label for="ingredients" class="labels">Select or add new ingredients
+                    <label for="ingredients" class="label">Select or add new ingredients
                         <span class="mandatory-field" title="Mandotory field">*</span>
                     </label>
-                    <input type="text" id="ingredients" onkeyup="showOptions(this)" autocomplete="off">
+                    <input type="text" id="ingredients" autocomplete="off">
                     <span id="selected-ingredients"></span>
                     <br>
                     <div id="list-of-ingredients"></div>
                 </div>
                 <br>
                 <div id="recipe-wrapper" class="field-wrapper">
-                    <label for="recipe" class="labels">Recipe 
+                    <label for="recipe" class="label">Recipe 
                         <span class="mandatory-field" title="Mandotory field">*</span></label>
                     <textarea id="recipe" rows="8"></textarea>
                 </div>
                 <br>
                 <div class="field-wrapper">
-                    <label for="images" class="labels">Upload Images&nbsp;
+                    <label for="images" class="label">Upload Images&nbsp;
                     </label>
                     <span id="input-image-help">Click on an image to remove it</span>
-                    <input type="file" name="images" id="images" accept="image/*" onchange="uploadImages(this)">
+                    <input type="file" name="images" id="images" accept="image/*">
                     <br>
                     <div id="uploaded-images-container">
                         <span id="uploaded-image-new">Click here to upload</span>
@@ -56,7 +56,7 @@
                 </div>
                 <br>
                 <div id="comments-wrapper" class="field-wrapper">
-                    <label for="comments" class="labels">Comments</label>
+                    <label for="comments" class="label">Comments</label>
                     <textarea id="comments" rows="4"></textarea>
                 </div>
                 <br>

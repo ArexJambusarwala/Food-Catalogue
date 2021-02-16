@@ -4,8 +4,8 @@ document.getElementById("uploaded-image-new").addEventListener("click", () => {
     document.getElementById("images").click();
 });
 
-function uploadImages(target) {
-    const files = target.files;
+document.getElementById("images").addEventListener("change", event => {
+    const files = event.target.files;
     let reader = new FileReader();
     for(file of files) {
         reader.onload = function(event) {
@@ -13,13 +13,12 @@ function uploadImages(target) {
         }
         reader.readAsDataURL(file);
     }
-    target.value = "";
-}
+    event.target.value = "";
+});
 
-function addToArray(target) {
-    uploadedImages.push(target.result);
+function createImage(src) {
     let image = document.createElement("img");
-    image.setAttribute("src", target.result);
+    image.setAttribute("src", src);
     image.setAttribute("class", "uploaded-image");
     image.setAttribute("id", uploadedImages.length - 1);
     image.addEventListener("click", (event) => {
@@ -28,62 +27,79 @@ function addToArray(target) {
         if(!uploadedImages.length)
             document.getElementById("input-image-help").style.display = "none";
     });
-    document.getElementById("uploaded-images-container").prepend(image);
+    return image;
+}
+
+function addToArray(target) {
+    uploadedImages.push(target.result);
+    document.getElementById("uploaded-images-container").prepend(createImage(target.result));
     document.getElementById("input-image-help").style.display = "inline";
 }
 
-function showOptions(target) {
+function createButton({className, value, innerHTML, eventHandler}) {
+    let btn = document.createElement("button");
+    btn.setAttribute("type", "button");
+    btn.setAttribute("class", className);
+    btn.setAttribute("value", value);
+    btn.innerHTML = innerHTML;
+    btn.addEventListener("mousedown", eventHandler);
+    return btn;
+}
+
+document.getElementById("ingredients").addEventListener("keyup", event => {
     document.getElementById("list-of-ingredients").innerHTML = "";
-    let curString = target.value.toLowerCase();
+    let curString = event.target.value.toLowerCase();
     let isPresent = false;
     for(ingredient of ingredients) {
-        if(ingredient.includes(curString)) {
-            let but = document.createElement("button");
-            but.setAttribute("type", "button");
-            but.setAttribute("class", "ingredient-select-button");
-            but.setAttribute("value", ingredient);
-            but.innerHTML = ingredient;
-            but.addEventListener("mousedown", addToIngredientList);
-            document.getElementById("list-of-ingredients").appendChild(but);
+        if(ingredient.includes(curString) && !selectedIngredients.includes(ingredient)) {
+            document.getElementById("list-of-ingredients").appendChild(
+                createButton({
+                    className: "ingredient-select-button", 
+                    value: ingredient, 
+                    innerHTML: ingredient, 
+                    eventHandler: addToIngredientList
+                })
+            );
         }
         if(ingredient === curString)
             isPresent = true;
     }
     if(!isPresent && curString) {
-        let but = document.createElement("button");
-        but.setAttribute("type", "button");
-        but.setAttribute("value", curString);
-        but.setAttribute("class", "ingredient-select-button");
-        but.addEventListener("mousedown", addToIngredientList);
-        but.innerHTML = "Add new: " + curString;
-        document.getElementById("list-of-ingredients").appendChild(but);
+        document.getElementById("list-of-ingredients").appendChild(
+            createButton({
+                className: "ingredient-select-button", 
+                value: curString, 
+                innerHTML: "Add new: " + curString, 
+                eventHandler: addToIngredientList
+            })
+        );
     }
-}
+});
 
 function addToIngredientList() {
     const value = this.value;
-    if(selectedIngredients.indexOf(value) === -1)
-        selectedIngredients.push(this.value);
-    let but = document.createElement("button");
-    but.setAttribute("type", "button");
-    but.setAttribute("class", "ingredient-selected-button");
-    but.setAttribute("value", value);
-    but.addEventListener("mousedown", removeFromIngredientList);
-    but.innerHTML = value;
-    document.getElementById("selected-ingredients").appendChild(but);
+    selectedIngredients.push(this.value);
+    document.getElementById("selected-ingredients").appendChild(
+        createButton({
+            className: "ingredient-selected-button", 
+            value: value, 
+            innerHTML: value, 
+            eventHandler: removeFromIngredientList
+        })
+    );
     document.getElementById("list-of-ingredients").innerHTML = "";
     document.getElementById("ingredients").value = "";
 }
-
-document.getElementById("ingredients").addEventListener("focus", (event) => {
-    document.getElementById("list-of-ingredients").style.display = "block";
-});
-
-document.getElementById("ingredients").addEventListener("blur", (event) => {
-    document.getElementById("list-of-ingredients").style.display = "none";
-});
 
 function removeFromIngredientList() {
     selectedIngredients.splice(selectedIngredients.indexOf(this.value), 1);
     this.remove();
 }
+
+document.getElementById("ingredients").addEventListener("focus", () => {
+    document.getElementById("list-of-ingredients").style.display = "block";
+});
+
+document.getElementById("ingredients").addEventListener("blur", () => {
+    document.getElementById("list-of-ingredients").style.display = "none";
+});
