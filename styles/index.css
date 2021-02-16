@@ -245,7 +245,7 @@ html, body {
     width: 90%;
     flex-wrap: wrap;
     margin-left: 4.9%;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: flex-start;
     align-content: flex-start;
     overflow-x: hidden;
