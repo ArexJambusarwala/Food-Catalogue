@@ -15,37 +15,27 @@
             <img src="assets/carousel-2.jpeg" class="carousel-images" alt="background-carousel-image-2">
             <img src="assets/carousel-3.jpg" class="carousel-images" alt="background-carousel-image-3">
         </div>
-        <div id="flex-container">
-            <div class="container">
-                <div class="search-bar">
-                        <button id="search-bar" tabindex="1" onclick="expandSearch()">Search recipes with ingredients</button>
+        <div id="button-container-wrapper">
+            <div id="button-container">
+                <div id="search-bar-wrapper">
+                        <button id="search-bar" tabindex="1">Search recipes with ingredients</button>
                 </div>
-                <div class="add-new-recipe">
-                    <a href="add-recipe.html" tabindex="2">
-                        <button id="add-recipe">
-                            <span>Share your recipe with others!</span>
-                        </button>
-                    </a>
-                </div>
+                <a id="add-new-recipe" href="add-recipe.html" tabindex="2">
+                    <button id="add-recipe">
+                        <span>Share your recipe with others!</span>
+                    </button>
+                </a>
             </div>
         </div>
 
         <div id="expanded-search-wrapper">
             <div id="sticky-search">
-                <input type="text" id="search-bar-expanded" placeholder="Search recipes with ingredients"
-                    onkeyup="showOptions(this)">
-                <button id="close-search" onclick="closeSearch()">Back to home screen</button>
+                <input type="text" id="search-bar-expanded" placeholder="Search recipes with ingredients">
+                <button id="close-search">Back to home screen</button>
                 <div id="available-ingredients"></div>
                 <div id="selected-ingredients"></div>
             </div>
             <div id="results">
-                <!--<a class="result-item" href="item.html">
-                    <img src="assets/carousel-1.jpg" class="result-item-image">
-                    <br>
-                    <span class="result-item-name">Cheese pizza</span>
-                    <br>
-                    <span class="result-item-ingredients">cgdgus, dhwdh, idhwid</span>
-                </a>
                 <a class="result-item" href="item.html">
                     <img src="assets/carousel-1.jpg" class="result-item-image">
                     <br>
@@ -171,86 +161,16 @@
                     <span class="result-item-name">Cheese pizza</span>
                     <br>
                     <span class="result-item-ingredients">cgdgus, dhwdh, idhwid</span>
-                </a>-->
+                </a>
+                <a class="result-item" href="item.html">
+                    <img src="assets/carousel-1.jpg" class="result-item-image">
+                    <br>
+                    <span class="result-item-name">Cheese pizza</span>
+                    <br>
+                    <span class="result-item-ingredients">cgdgus, dhwdh, idhwid</span>
+                </a>
             </div>
         </div>
-
-
-        <!--
-        <div id="expanded-search-wrapper">
-            <input type="text" id="search-bar-expanded" placeholder="Search recipes with ingredients"
-                onkeyup="showOptions()">
-            <span id="close-search" onclick="closeSearch()">X</span>
-            <br><br>
-            <div id="items-flex-container">
-                <div id="flex-item-1">
-                    <h2>Select from these ingredients</h3>
-                    <div id="available-ingredients">
-                    </div>
-                    <h2>Selected ingredients</h3>
-                    <div id="selected-ingredients">
-                    </div>
-                </div>
-                <div id="flex-item-2">
-                    <a class="result-item" href="item.html">
-                        <img src="assets/carousel-1.jpg" class="result-item-image">
-                        <br>
-                        <span class="result-item-name">Cheese pizza</span>
-                        <br>
-                        <span class="result-item-ingredients">cgdgus, dhwdh, idhwid</span>
-                    </a>
-                    <a class="result-item" href="item.html">
-                        <img src="assets/carousel-1.jpg" class="result-item-image">
-                        <br>
-                        <span class="result-item-name">Cheese pizza</span>
-                        <br>
-                        <span class="result-item-ingredients">cgdgus, dhwdh, idhwid</span>
-                    </a>
-                    <a class="result-item" href="item.html">
-                        <img src="assets/carousel-1.jpg" class="result-item-image">
-                        <br>
-                        <span class="result-item-name">Cheese pizza</span>
-                        <br>
-                        <span class="result-item-ingredients">cgdgus, dhwdh, idhwid</span>
-                    </a>
-                    <a class="result-item" href="item.html">
-                        <img src="assets/carousel-1.jpg" class="result-item-image">
-                        <br>
-                        <span class="result-item-name">Cheese pizza</span>
-                        <br>
-                        <span class="result-item-ingredients">cgdgus, dhwdh, idhwid</span>
-                    </a>
-                    <a class="result-item" href="item.html">
-                        <img src="assets/carousel-1.jpg" class="result-item-image">
-                        <br>
-                        <span class="result-item-name">Cheese pizza</span>
-                        <br>
-                        <span class="result-item-ingredients">cgdgus, dhwdh, idhwid</span>
-                    </a>
-                    <a class="result-item" href="item.html">
-                        <img src="assets/carousel-1.jpg" class="result-item-image">
-                        <br>
-                        <span class="result-item-name">Cheese pizza</span>
-                        <br>
-                        <span class="result-item-ingredients">cgdgus, dhwdh, idhwid</span>
-                    </a>
-                    <a class="result-item" href="item.html">
-                        <img src="assets/carousel-1.jpg" class="result-item-image">
-                        <br>
-                        <span class="result-item-name">Cheese pizza</span>
-                        <br>
-                        <span class="result-item-ingredients">cgdgus, dhwdh, idhwid</span>
-                    </a>
-                    <a class="result-item" href="item.html">
-                        <img src="assets/carousel-1.jpg" class="result-item-image">
-                        <br>
-                        <span class="result-item-name">Cheese pizza</span>
-                        <br>
-                        <span class="result-item-ingredients">cgdgus, dhwdh, idhwid</span>
-                    </a>
-                </div>
-            </div>
-        </div>-->
         <script src="scripts/index.js"></script>
         <script src="scripts/recipes.js"></script>
     </body>
