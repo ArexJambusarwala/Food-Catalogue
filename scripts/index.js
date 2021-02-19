@@ -58,9 +58,6 @@ function createButton({className, value, innerHTML, eventHandler}, event = "clic
 function showOptions(event) {
     document.getElementById("available-ingredients").innerHTML = "";
     let curString = event.target.value.toLowerCase();
-    console.log(curString);
-    if(!curString)
-        return;
     for(ingredient of ingredients) {
         if(selectedIngredients.includes(ingredient))
             continue;
@@ -86,7 +83,7 @@ function addToSelectedList(event) {
         createButton({
             className: "toggle-ingredient selected", 
             value: value, 
-            innerHTML: value, 
+            innerHTML: value + '<i class="fas fa-times-circle"></i>', 
             eventHandler: removeFromSelectedList
         })
     );
@@ -145,10 +142,21 @@ function createItem(recipe) {
     return item;
 }
 
+let defaultRecipes = Array(15).fill(recipes[0]);
+
+function displayDefaultRecipes(defaultRecipes) {
+    for(recipe of defaultRecipes)
+        document.getElementById("results").appendChild(createItem(recipe));
+}
+
+displayDefaultRecipes(defaultRecipes);
+
 function showRecipes() {
     document.getElementById("results").innerHTML = "";
-    if(!selectedIngredients.length)
+    if(!selectedIngredients.length){
+        displayDefaultRecipes(defaultRecipes);
         return;
+    }
     let recipesToBeDisplayed = recipes.filter(recipe => 
         selectedIngredients.every(ingredient => recipe.ingredients.includes(ingredient))
     );

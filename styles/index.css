@@ -128,7 +128,8 @@ html, body {
 #sticky-search {
     z-index: 2;
     padding-bottom: 5px;
-    position: relative;
+    position: sticky;
+    background-color: black;
     top: 0;
 }
 
@@ -187,8 +188,8 @@ html, body {
     margin-top: 8px;
     z-index: 2;
     position: absolute;
-    width: 51.3%;
-    margin-left: 18%;
+    width: 51.5%;
+    margin-left: 17.9%;
     border-radius: 3px;
     max-height: 300%;
     overflow-y: scroll;
@@ -197,15 +198,18 @@ html, body {
 
 .available {
     color: black;
-    width: 95%;
+    width: 100%;
     font-size: 120%;
-    margin-bottom: 0.5%;
-    background-color: darkgray;
-    margin-top: 0.5%;
-    border: 1px solid darkgrey;
-    min-height: 3em;
+    font-family: cursive;
+    letter-spacing: 3px;
+    font-weight: bold;
+    text-align: start;
+    padding-left: 2%;
+    background-color: white;
+    border-bottom: 1px solid black;
+    min-height: 2.5em;
     border-radius: inherit;
-    transition: 0.3s ease-in;
+    transition: 0.1s ease-in;
 }
 
 .available:hover {
@@ -238,6 +242,10 @@ html, body {
     min-height: 1.5em;
     cursor: pointer;
     transition: 0.3s ease-in;
+}
+
+.fa-times-circle {
+    float: right;
 }
 
 #results {

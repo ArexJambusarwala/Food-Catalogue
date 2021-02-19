@@ -47,6 +47,7 @@ function createButton({className, value, innerHTML, eventHandler}) {
 }
 
 document.getElementById("ingredients").addEventListener("keyup", event => {
+    document.getElementById("ingredients").setCustomValidity("");
     document.getElementById("list-of-ingredients").innerHTML = "";
     let curString = event.target.value.toLowerCase();
     let isPresent = false;
@@ -77,13 +78,14 @@ document.getElementById("ingredients").addEventListener("keyup", event => {
 });
 
 function addToIngredientList() {
+    document.getElementById("ingredients").setCustomValidity("");
     const value = this.value;
     selectedIngredients.push(this.value);
     document.getElementById("selected-ingredients").appendChild(
         createButton({
             className: "ingredient-selected-button", 
             value: value, 
-            innerHTML: value, 
+            innerHTML: value + '&ensp;<i class="fas fa-times"></i>', 
             eventHandler: removeFromIngredientList
         })
     );
@@ -103,3 +105,12 @@ document.getElementById("ingredients").addEventListener("focus", () => {
 document.getElementById("ingredients").addEventListener("blur", () => {
     document.getElementById("list-of-ingredients").style.display = "none";
 });
+
+document.getElementById("submit-button").addEventListener("click", () => {
+    if(!document.getElementById("selected-ingredients").childElementCount) {
+        document.getElementById("ingredients").setCustomValidity("Select atleast one ingredient!");
+        document.getElementById("ingredients").reportValidity();
+        return false;
+    }
+    alert("Thanks for sharing!");
+})
