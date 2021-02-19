@@ -46,8 +46,9 @@ function createButton({className, value, innerHTML, eventHandler}) {
     return btn;
 }
 
-document.getElementById("ingredients").addEventListener("keyup", event => {
-    document.getElementById("ingredients").setCustomValidity("");
+["focus", "keyup"].forEach( eventName => {
+    document.getElementById("ingredients").addEventListener(eventName, event => {
+    eventName === "keyup" ? document.getElementById("ingredients").setCustomValidity("") : null;
     document.getElementById("list-of-ingredients").innerHTML = "";
     let curString = event.target.value.toLowerCase();
     let isPresent = false;
@@ -75,7 +76,7 @@ document.getElementById("ingredients").addEventListener("keyup", event => {
             })
         );
     }
-});
+})});
 
 function addToIngredientList() {
     document.getElementById("ingredients").setCustomValidity("");
@@ -113,4 +114,4 @@ document.getElementById("submit-button").addEventListener("click", () => {
         return false;
     }
     alert("Thanks for sharing!");
-})
+});
