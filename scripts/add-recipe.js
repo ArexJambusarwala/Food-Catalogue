@@ -113,5 +113,8 @@ document.getElementById("submit-button").addEventListener("click", () => {
         document.getElementById("ingredients").reportValidity();
         return false;
     }
+});
+
+document.getElementById("form").addEventListener("submit", () => {
     alert("Thanks for sharing!");
 });
