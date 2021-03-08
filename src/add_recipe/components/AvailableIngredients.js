@@ -10,9 +10,9 @@ function AvailableIngredient(props) {
     return (
         <button 
             value={props.name} 
-            className="toggle-ingredient available--big"
+            className="ingredient-select-button"
             onMouseDown={handleMouseDown}>
-                {props.name}
+                {props.showText || props.name}
         </button>
     )
 }
@@ -23,9 +23,11 @@ export default function AvailableIngredients(props) {
     const ingredientsToDisplay = ingredients.filter(ingredient => 
         (!selectedIngredients.includes(ingredient)&&ingredient.includes(props.search)));
     return (
-        <div id="available-ingredients--big">
+        <div id="available-ingredients--small">
             {ingredientsToDisplay.map(ingredient => 
                 <AvailableIngredient name={ingredient} key={ingredient}/>)}
+            {ingredients.indexOf(props.search) === -1 && props.search &&
+                <AvailableIngredient name={props.search} showText={`Add new: ${props.search}`}/>}
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectRecipes, selectSelectedIngredients } from '../store/recipeSlice'
+import { selectRecipes, selectSelectedIngredients } from '../../store/recipeSlice'
 import '../styles/resultitems.css'
 
 function ResultItem({id , image, name, ingredients}) {

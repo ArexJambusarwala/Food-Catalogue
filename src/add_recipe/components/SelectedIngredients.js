@@ -8,18 +8,20 @@ function SelectedIngredient(props) {
         dispatch(removeFromSelectedIngredients(props.name));
     }
     return(
-        <button value={props.name} className="toggle-ingredient selected" onClick={removeFromSelected}>
+        <button value={props.name} className="ingredient-selected-button" onClick={removeFromSelected}>
             {props.name}
-            <i className="fas fa-times-circle"></i>
+            &ensp;<i className="fas fa-times"></i>
         </button>
     )
 }
 
 export default function SelectedIngredients() {
     const selectedIngredients = useSelector(selectSelectedIngredients);
+    if(selectedIngredients.length)
+        document.getElementById("ingredients").setCustomValidity("");
     return(
-        <div id="selected-ingredients">
+        <span>
             {selectedIngredients.map(ingredient => <SelectedIngredient key={ingredient} name={ingredient}/>)}
-        </div>
+        </span>
     )
 }

@@ -32,6 +32,9 @@ export const slice = createSlice({
         },
         removeFromSelectedIngredients: (state, action) => {
             state.selectedIngredients.splice(state.selectedIngredients.indexOf(action.payload), 1);
+        },
+        clearSelectedIngredients: state => {
+            state.selectedIngredients = [];
         }
     }
 });
@@ -40,6 +43,6 @@ export const selectRecipes = state => state.recipe.recipes
 export const selectIngredients = state => state.recipe.ingredients
 export const selectSelectedIngredients = state => state.recipe.selectedIngredients
 
-export const {addToSelectedIngredients, removeFromSelectedIngredients} = slice.actions;
+export const {addToSelectedIngredients, removeFromSelectedIngredients, clearSelectedIngredients} = slice.actions;
 
 export default slice.reducer

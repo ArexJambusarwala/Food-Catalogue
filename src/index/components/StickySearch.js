@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/stickysearch.css'
-import { toggle } from '../store/expandSlice'
+import { toggle } from '../../store/expandSlice'
 import { useDispatch } from 'react-redux';
 import AvailableIngredients from './AvailableIngredients'
 import SelectedIngredients from './SelectedIngredients'
@@ -20,16 +20,16 @@ export default function StickySearch() {
     function handleFocus() {
         setAvailable(true);
         //document.getElementById("available-ingredients").style.display = "block";
-        //document.getElementById("results").style.opacity = "0.3";
+        document.getElementById("results").style.opacity = "0.3";
         document.getElementById("selected-ingredients").style.opacity = "0.3";
-        //document.getElementById("results").style.transition = "0.2s ease-in";
+        document.getElementById("results").style.transition = "0.2s ease-in";
         document.getElementById("selected-ingredients").style.transition = "0.2s ease-in";
     }
     function handleBlur() {
         setAvailable(false);
-        //document.getElementById("results").style.opacity = "1";
+        document.getElementById("results").style.opacity = "1";
         document.getElementById("selected-ingredients").style.opacity = "0.8";
-        //document.getElementById("results").style.transition = "0.2s ease-in";
+        document.getElementById("results").style.transition = "0.2s ease-in";
         //document.getElementById("available-ingredients").style.display = "none";
     }
     function handleChange(event) {

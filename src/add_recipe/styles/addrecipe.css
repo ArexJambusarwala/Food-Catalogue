@@ -1,0 +1,11 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: antiquewhite;
+    height: 100%;
+    margin: 0;
+    overflow-y: auto;
+}
