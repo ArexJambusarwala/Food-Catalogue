@@ -1,22 +1,26 @@
 import ReactDOM from 'react-dom';
-import LandingPage from './index/components/LandingPage'
 import { Provider } from 'react-redux';
 import store  from './store/IndexStore'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import AddRecipe from './add_recipe/components/AddRecipe'
+import { lazy, Suspense } from 'react';
+
+const AddRecipe = lazy(() => import('./add_recipe/components/AddRecipe'));
+const LandingPage = lazy(() => import('./index/components/LandingPage'));
 
 ReactDOM.render(
   <BrowserRouter forceRefresh={true}>
-    <Provider store={store}>
-      <Switch>
-        <Route path="/add-recipe" exact>
-          <AddRecipe />
-        </Route>
-        <Route path={["/", "index"]}>
-          <LandingPage />
-        </Route>
-      </Switch>
-    </Provider>
+    <Suspense fallback={null}>
+      <Provider store={store}>
+        <Switch>
+          <Route path="/add-recipe" exact>
+            <AddRecipe />
+          </Route>
+          <Route path={["/", "index"]}>
+            <LandingPage />
+          </Route>
+        </Switch>
+      </Provider>
+    </Suspense>
   </BrowserRouter>,
   document.getElementById('root')
 );
