@@ -16,7 +16,7 @@ const ButtonWrapper = React.memo(function ButtonWrapper() {
                         <button id="search-bar" onClick={handleExpandSearch}>Search recipes with ingredients</button>
                 </div>
                 <Link id="add-new-recipe" to="/add-recipe">
-                    <button id="add-recipe" tabIndex="-1">
+                    <button id="add-recipe" tabIndex={-1}>
                         <span>Share your recipe with others!</span>
                     </button>
                 </Link>

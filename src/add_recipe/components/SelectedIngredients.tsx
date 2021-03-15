@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromSelectedIngredients, selectSelectedIngredients } from '../../store/recipeSlice'
 
-function SelectedIngredient(props) {
+function SelectedIngredient(props: { name: string; }) {
     const dispatch = useDispatch();
     function removeFromSelected() {
         dispatch(removeFromSelectedIngredients(props.name));
@@ -18,10 +18,10 @@ function SelectedIngredient(props) {
 export default function SelectedIngredients() {
     const selectedIngredients = useSelector(selectSelectedIngredients);
     if(selectedIngredients.length)
-        document.getElementById("ingredients").setCustomValidity("");
+        (document.getElementById("ingredients") as HTMLInputElement).setCustomValidity("");
     return(
         <span>
-            {selectedIngredients.map(ingredient => <SelectedIngredient key={ingredient} name={ingredient}/>)}
+            {selectedIngredients.map((ingredient: string) => <SelectedIngredient key={ingredient} name={ingredient}/>)}
         </span>
     )
 }

@@ -15,6 +15,17 @@ export default function Form({
     searchInput,
     available,
     uploadedImages
+}: {
+    handleAddNewImage: (event: React.MouseEvent) => void,
+    handleBlur: (event: React.FocusEvent) => void,
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+    handleFocus: (event: React.FocusEvent) => void,
+    handleNewImage: (event: React.FormEvent<HTMLInputElement>) => void,
+    handleSubmit: (event: { preventDefault: () => void; }) => void,
+    handleRemoveImage: (event: React.MouseEvent<HTMLImageElement>) => void,
+    searchInput: string,
+    available: boolean,
+    uploadedImages: any[];
 }) {
     return (
         <div id="form-container">
@@ -47,7 +58,7 @@ export default function Form({
                 <div id="recipe-wrapper" className="field-wrapper">
                     <label htmlFor="recipe" className="label">Recipe 
                         <span className="mandatory-field" title="Mandotory field">*</span></label>
-                    <textarea id="recipe" rows="8" required></textarea>
+                    <textarea id="recipe" rows={8} required></textarea>
                 </div>
                 <br />
                 <div className="field-wrapper">
@@ -57,7 +68,7 @@ export default function Form({
                     <input type="file" name="images" id="images" accept="image/*" onChange={handleNewImage}/>
                     <br />
                     <div id="uploaded-images-container">
-                        {uploadedImages.map((image, index) => <UploadedImage key={index}
+                        {uploadedImages.map((image: string, index: number) => <UploadedImage key={index}
                             src={image} id={index} removeHandler={handleRemoveImage}/>)}
                         <span id="uploaded-image-new" onClick={handleAddNewImage}>Click here to upload</span>
                     </div>
@@ -65,7 +76,7 @@ export default function Form({
                 <br />
                 <div id="comments-wrapper" className="field-wrapper">
                     <label htmlFor="comments" className="label">Comments</label>
-                    <textarea id="comments" rows="4"></textarea>
+                    <textarea id="comments" rows={4}></textarea>
                 </div>
                 <br />
                 <input id="submit-button" type="submit"/>

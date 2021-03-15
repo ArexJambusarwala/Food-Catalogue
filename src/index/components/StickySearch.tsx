@@ -10,33 +10,31 @@ export default function StickySearch() {
     const [available, setAvailable] = useState(false);
     const [searchInput, setInput] = useState("");
     useEffect(() => {
-        document.getElementById("expanded-search-wrapper").style.display = "block";
-        document.getElementById("search-bar-expanded").style.animation = "search 1.5s 0s 1 forwards";
-        document.getElementById("close-search").style.animation = "close 1.5s 0s 1 forwards";
+        document.getElementById("expanded-search-wrapper")!.style.display = "block";
+        document.getElementById("search-bar-expanded")!.style.animation = "search 1.5s 0s 1 forwards";
+        document.getElementById("close-search")!.style.animation = "close 1.5s 0s 1 forwards";
         setTimeout(() => {
-            document.getElementById("search-bar-expanded").focus();
+            document.getElementById("search-bar-expanded")!.focus();
         }, 1300);
     }, []);
     function handleFocus() {
         setAvailable(true);
-        //document.getElementById("available-ingredients").style.display = "block";
-        document.getElementById("results").style.opacity = "0.3";
-        document.getElementById("selected-ingredients").style.opacity = "0.3";
-        document.getElementById("results").style.transition = "0.2s ease-in";
-        document.getElementById("selected-ingredients").style.transition = "0.2s ease-in";
+        document.getElementById("results")!.style.opacity = "0.3";
+        document.getElementById("selected-ingredients")!.style.opacity = "0.3";
+        document.getElementById("results")!.style.transition = "0.2s ease-in";
+        document.getElementById("selected-ingredients")!.style.transition = "0.2s ease-in";
     }
     function handleBlur() {
         setAvailable(false);
-        document.getElementById("results").style.opacity = "1";
-        document.getElementById("selected-ingredients").style.opacity = "0.8";
-        document.getElementById("results").style.transition = "0.2s ease-in";
-        //document.getElementById("available-ingredients").style.display = "none";
+        document.getElementById("results")!.style.opacity = "1";
+        document.getElementById("selected-ingredients")!.style.opacity = "0.8";
+        document.getElementById("results")!.style.transition = "0.2s ease-in";
     }
-    function handleChange(event) {
+    function handleChange(event: { target: { value: string; }; }) {
         setInput(event.target.value.toLowerCase());
     }
     function handleClose() {
-        document.getElementById("expanded-search-wrapper").style.display = "none";
+        document.getElementById("expanded-search-wrapper")!.style.display = "none";
         dispatch(toggle());
     }
     return (
