@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectRecipes, selectSelectedIngredients } from '../../store/recipeSlice'
 import '../styles/resultitems.css'
 
-function ResultItem({id , image, name, ingredients}) {
+function ResultItem({ image, name, ingredients}) {
     return (
         <a className="result-item" href="/">
             <img src={image} className="result-item-image" alt={name} />
@@ -19,14 +19,14 @@ function ResultItem({id , image, name, ingredients}) {
     )
 }
 
-export default function ResultItems() {
+export default function ResultItems({resultItemsOpacity}) {
     const selectedIngredients = useSelector(selectSelectedIngredients);
     const recipes = useSelector(selectRecipes);
     const recipesToBeDisplayed = recipes.filter(recipe => 
         selectedIngredients.every(ingredient => recipe.ingredients.includes(ingredient))
     );
     return(
-        <div id="results">
+        <div id="results" style={{opacity: resultItemsOpacity, transition: "0.2s ease-in"}}>
             {recipesToBeDisplayed.map(recipe => 
                 <ResultItem 
                     key={recipe.id}

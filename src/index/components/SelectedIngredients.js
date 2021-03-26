@@ -15,11 +15,13 @@ function SelectedIngredient(props) {
     )
 }
 
-export default function SelectedIngredients() {
+const SelectedIngredients = React.memo(() => {
     const selectedIngredients = useSelector(selectSelectedIngredients);
     return(
         <div id="selected-ingredients">
             {selectedIngredients.map(ingredient => <SelectedIngredient key={ingredient} name={ingredient}/>)}
         </div>
     )
-}
+});
+
+export default SelectedIngredients;
