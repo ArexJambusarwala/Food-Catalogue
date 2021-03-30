@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { selectSelectedIngredients } from '../../store/recipeSlice';
 
 export default function withHandlers(Component) {
-    return function() {
+    return function(baseProps) {
         const selectedIngredients = useSelector(selectSelectedIngredients);
         const [searchInput, setInput] = useState("");
         const [available, setAvailable] = useState(false);
         const [uploadedImages, setUploadedImages] = useState([]);
+        const ingredientsInput = useRef(null);
+        const inputImageHelp = useRef(null);
+        const inputImageFile = useRef(null);
 
         function handleChange(event) {
-            document.getElementById("ingredients").setCustomValidity("");
+            setCustomError();
             setInput(event.target.value.toLowerCase());
         }
 
@@ -22,8 +25,12 @@ export default function withHandlers(Component) {
             setAvailable(false);
         }
 
+        function setCustomError() {
+            ingredientsInput.current.setCustomValidity("");
+        }
+
         function handleAddNewImage() {
-            document.getElementById("images").click();
+            inputImageFile.current.click();
         }
 
         function handleNewImage(event) {
@@ -38,7 +45,7 @@ export default function withHandlers(Component) {
 
         function addToArray(target) {
             setUploadedImages(prev => prev.concat(target.result));
-            document.getElementById("input-image-help").style.display = "inline";
+            inputImageHelp.current.style.display = "inline";
         }
 
         function handleRemoveImage(event) {
@@ -47,31 +54,34 @@ export default function withHandlers(Component) {
         
         useEffect(() => {
             if(!uploadedImages.length)
-                document.getElementById("input-image-help").style.display = "none";
+                inputImageHelp.current.style.display = "none";
         },[uploadedImages]);
 
         function handleSubmit(event) {
             if(!selectedIngredients.length) {
-                console.log(selectedIngredients);
-                document.getElementById("ingredients").setCustomValidity("Select atleast one ingredient!");
-                document.getElementById("ingredients").reportValidity();
+                ingredientsInput.current.setCustomValidity("Select atleast one ingredient!");
+                ingredientsInput.current.reportValidity();
             }
             else
                 alert("Thanks for sharing!");
             event.preventDefault();
         }
-        return(
-        <Component
-            handleAddNewImage={handleAddNewImage}
-            handleBlur={handleBlur}
-            handleChange={handleChange}
-            handleFocus={handleFocus}
-            handleNewImage={handleNewImage}
-            handleSubmit={handleSubmit}
-            handleRemoveImage={handleRemoveImage}
-            searchInput={searchInput}
-            available={available}
-            uploadedImages={uploadedImages}
-        />)
+        const props = {
+            handleAddNewImage,
+            handleBlur,
+            handleChange,
+            handleFocus,
+            setCustomError,
+            handleNewImage,
+            handleSubmit,
+            handleRemoveImage,
+            searchInput,
+            available,
+            ingredientsInput,
+            inputImageHelp,
+            inputImageFile,
+            uploadedImages
+        };
+        return(<Component {...baseProps} {...props} />)
     }
 }

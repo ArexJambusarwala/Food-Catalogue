@@ -9,11 +9,15 @@ export default function Form({
     handleBlur,
     handleChange,
     handleFocus,
+    setCustomError,
     handleNewImage,
     handleSubmit,
     handleRemoveImage,
     searchInput,
     available,
+    ingredientsInput,
+    inputImageHelp,
+    inputImageFile,
     uploadedImages
 }) {
     return (
@@ -38,8 +42,8 @@ export default function Form({
                         <span className="mandatory-field" title="Mandotory field">*</span>
                     </label>
                     <input type="text" id="ingredients" autoComplete="off" value={searchInput} onChange={handleChange}
-                        onFocus={handleFocus} onBlur={handleBlur}/>
-                    <SelectedIngredients />
+                        onFocus={handleFocus} onBlur={handleBlur} ref={ingredientsInput}/>
+                    <SelectedIngredients setCustomError={setCustomError} />
                     <br />
                     {available ? <AvailableIngredients search={searchInput}/> : null}
                 </div>
@@ -47,14 +51,15 @@ export default function Form({
                 <div id="recipe-wrapper" className="field-wrapper">
                     <label htmlFor="recipe" className="label">Recipe 
                         <span className="mandatory-field" title="Mandotory field">*</span></label>
-                    <textarea id="recipe" rows="8" required></textarea>
+                    <textarea id="recipe" rows={8} required></textarea>
                 </div>
                 <br />
                 <div className="field-wrapper">
                     <label htmlFor="images" className="label">Upload Images&nbsp;
                     </label>
-                    <span id="input-image-help">Click on an image to remove it</span>
-                    <input type="file" name="images" id="images" accept="image/*" onChange={handleNewImage}/>
+                    <span id="input-image-help" ref={inputImageHelp}>Click on an image to remove it</span>
+                    <input type="file" name="images" id="images" accept="image/*" onChange={handleNewImage}
+                        ref={inputImageFile}/>
                     <br />
                     <div id="uploaded-images-container">
                         {uploadedImages.map((image, index) => <UploadedImage key={index}
@@ -65,7 +70,7 @@ export default function Form({
                 <br />
                 <div id="comments-wrapper" className="field-wrapper">
                     <label htmlFor="comments" className="label">Comments</label>
-                    <textarea id="comments" rows="4"></textarea>
+                    <textarea id="comments" rows={4}></textarea>
                 </div>
                 <br />
                 <input id="submit-button" type="submit"/>

@@ -15,13 +15,13 @@ function SelectedIngredient(props) {
     )
 }
 
-export default function SelectedIngredients() {
+export default function SelectedIngredients({setCustomError}) {
     const selectedIngredients = useSelector(selectSelectedIngredients);
     if(selectedIngredients.length)
-        document.getElementById("ingredients").setCustomValidity("");
+        setCustomError();
     return(
         <span>
-            {selectedIngredients.map(ingredient => <SelectedIngredient key={ingredient} name={ingredient}/>)}
+            {selectedIngredients.map((ingredient) => <SelectedIngredient key={ingredient} name={ingredient}/>)}
         </span>
     )
 }

@@ -15,11 +15,11 @@ function SelectedIngredient(props) {
     )
 }
 
-const SelectedIngredients = React.memo(() => {
+const SelectedIngredients = React.forwardRef((_props,ref) => {
     const selectedIngredients = useSelector(selectSelectedIngredients);
     return(
-        <div id="selected-ingredients">
-            {selectedIngredients.map(ingredient => <SelectedIngredient key={ingredient} name={ingredient}/>)}
+        <div id="selected-ingredients" ref={ref}>
+            {selectedIngredients.map((ingredient) => <SelectedIngredient key={ingredient} name={ingredient}/>)}
         </div>
     )
 });

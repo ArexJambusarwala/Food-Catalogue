@@ -19,15 +19,15 @@ function ResultItem({ image, name, ingredients}) {
     )
 }
 
-export default function ResultItems({resultItemsOpacity}) {
+const ResultItems = React.memo(({resultItemsOpacity}) => {
     const selectedIngredients = useSelector(selectSelectedIngredients);
     const recipes = useSelector(selectRecipes);
-    const recipesToBeDisplayed = recipes.filter(recipe => 
-        selectedIngredients.every(ingredient => recipe.ingredients.includes(ingredient))
+    const recipesToBeDisplayed = recipes.filter((recipe) => 
+        selectedIngredients.every((ingredient) => recipe.ingredients.includes(ingredient))
     );
     return(
         <div id="results" style={{opacity: resultItemsOpacity, transition: "0.2s ease-in"}}>
-            {recipesToBeDisplayed.map(recipe => 
+            {recipesToBeDisplayed.map((recipe) => 
                 <ResultItem 
                     key={recipe.id}
                     image={recipe.images[0]}
@@ -37,4 +37,6 @@ export default function ResultItems({resultItemsOpacity}) {
             )}
         </div>
     )
-}
+});
+
+export default ResultItems
