@@ -15,10 +15,10 @@ function SelectedIngredient(props: { name: string; }) {
     )
 }
 
-export default function SelectedIngredients() {
+export default function SelectedIngredients({setCustomError}: {setCustomError: () => void}) {
     const selectedIngredients = useSelector(selectSelectedIngredients);
     if(selectedIngredients.length)
-        (document.getElementById("ingredients") as HTMLInputElement).setCustomValidity("");
+        setCustomError();
     return(
         <span>
             {selectedIngredients.map((ingredient: string) => <SelectedIngredient key={ingredient} name={ingredient}/>)}

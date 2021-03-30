@@ -9,7 +9,7 @@ function CarouselImage(props: {src: string, alt: string}) {
 const Carousel = React.memo(function Carousel() {
     useEffect(() => {
         (function setCarouselAnimation() {
-            let carouselImages = document.getElementsByClassName("carousel-images")as HTMLCollectionOf<HTMLElement>;
+            let carouselImages = document.getElementsByClassName("carousel-images") as HTMLCollectionOf<HTMLElement>;
             const numberOfCarouselImages = carouselImages.length, totalTime = numberOfCarouselImages * 5;
             for(let i=0; i<numberOfCarouselImages; i++) {
                 carouselImages[i].style.animation = `carousel ${totalTime}s infinite`;

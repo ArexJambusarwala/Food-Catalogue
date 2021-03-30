@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { LegacyRef } from 'react';
 import '../styles/form.css';
 import AvailableIngredients from './AvailableIngredients';
 import SelectedIngredients from './SelectedIngredients';
@@ -9,22 +9,30 @@ export default function Form({
     handleBlur,
     handleChange,
     handleFocus,
+    setCustomError,
     handleNewImage,
     handleSubmit,
     handleRemoveImage,
     searchInput,
     available,
+    ingredientsInput,
+    inputImageHelp,
+    inputImageFile,
     uploadedImages
 }: {
     handleAddNewImage: (event: React.MouseEvent) => void,
     handleBlur: (event: React.FocusEvent) => void,
     handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
     handleFocus: (event: React.FocusEvent) => void,
+    setCustomError: () => void,
     handleNewImage: (event: React.FormEvent<HTMLInputElement>) => void,
     handleSubmit: (event: { preventDefault: () => void; }) => void,
     handleRemoveImage: (event: React.MouseEvent<HTMLImageElement>) => void,
     searchInput: string,
     available: boolean,
+    ingredientsInput: LegacyRef<HTMLInputElement>,
+    inputImageHelp: LegacyRef<HTMLSpanElement>,
+    inputImageFile: LegacyRef<HTMLInputElement>,
     uploadedImages: any[];
 }) {
     return (
@@ -49,8 +57,8 @@ export default function Form({
                         <span className="mandatory-field" title="Mandotory field">*</span>
                     </label>
                     <input type="text" id="ingredients" autoComplete="off" value={searchInput} onChange={handleChange}
-                        onFocus={handleFocus} onBlur={handleBlur}/>
-                    <SelectedIngredients />
+                        onFocus={handleFocus} onBlur={handleBlur} ref={ingredientsInput}/>
+                    <SelectedIngredients setCustomError={setCustomError} />
                     <br />
                     {available ? <AvailableIngredients search={searchInput}/> : null}
                 </div>
@@ -64,8 +72,9 @@ export default function Form({
                 <div className="field-wrapper">
                     <label htmlFor="images" className="label">Upload Images&nbsp;
                     </label>
-                    <span id="input-image-help">Click on an image to remove it</span>
-                    <input type="file" name="images" id="images" accept="image/*" onChange={handleNewImage}/>
+                    <span id="input-image-help" ref={inputImageHelp}>Click on an image to remove it</span>
+                    <input type="file" name="images" id="images" accept="image/*" onChange={handleNewImage}
+                        ref={inputImageFile}/>
                     <br />
                     <div id="uploaded-images-container">
                         {uploadedImages.map((image: string, index: number) => <UploadedImage key={index}

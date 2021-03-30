@@ -11,7 +11,7 @@ export default function AddRecipe() {
     useEffect(() => {
         dispatch(clearSelectedIngredients());
     }, [dispatch]);
-    const FormWithHandlers = withHandlers(Form);
+    const FormWithHandlers: React.FC = withHandlers(Form);
     return(
         <>
             <Header />

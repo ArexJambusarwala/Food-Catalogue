@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ForwardedRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromSelectedIngredients, selectSelectedIngredients } from '../../store/recipeSlice'
 
@@ -15,11 +15,13 @@ function SelectedIngredient(props: { name: string }) {
     )
 }
 
-export default function SelectedIngredients() {
+const SelectedIngredients = React.forwardRef((_props,ref: ForwardedRef<HTMLDivElement>) => {
     const selectedIngredients = useSelector(selectSelectedIngredients);
     return(
-        <div id="selected-ingredients">
+        <div id="selected-ingredients" ref={ref}>
             {selectedIngredients.map((ingredient: string ) => <SelectedIngredient key={ingredient} name={ingredient}/>)}
         </div>
     )
-}
+});
+
+export default SelectedIngredients

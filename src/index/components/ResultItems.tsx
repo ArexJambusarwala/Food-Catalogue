@@ -19,14 +19,14 @@ function ResultItem({image, name, ingredients}: {image: string, name: string, in
     )
 }
 
-export default function ResultItems() {
+const ResultItems = React.memo(({resultItemsOpacity}: {resultItemsOpacity: number}) => {
     const selectedIngredients = useSelector(selectSelectedIngredients);
     const recipes = useSelector(selectRecipes);
     const recipesToBeDisplayed = recipes.filter((recipe: { ingredients: string[]; }) => 
         selectedIngredients.every((ingredient: string) => recipe.ingredients.includes(ingredient))
     );
     return(
-        <div id="results">
+        <div id="results" style={{opacity: resultItemsOpacity, transition: "0.2s ease-in"}}>
             {recipesToBeDisplayed.map((recipe: { id: number; images: string[]; itemName: string; ingredients: string[]; }) => 
                 <ResultItem 
                     key={recipe.id}
@@ -37,4 +37,6 @@ export default function ResultItems() {
             )}
         </div>
     )
-}
+});
+
+export default ResultItems
