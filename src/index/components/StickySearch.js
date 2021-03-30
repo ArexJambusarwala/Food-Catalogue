@@ -39,9 +39,9 @@ const StickySearch = React.memo(function ({setExpandedSearchWrapperDisplay, setR
     }
     return (
         <div id="sticky-search">
-            <input type="text" id="search-bar-expanded" placeholder="Search recipes with ingredients" 
+            <input type="text" id="search-bar-expanded" placeholder="Search recipes with ingredients"
                 onFocus={handleFocus} onBlur={handleBlur} onChange={handleChange} value={searchInput}
-                ref={searchBarExpanded}/>
+                ref={searchBarExpanded} autoComplete="off" />
             <button id="close-search" onClick={handleClose} ref={closeSearchButton}>Back to home screen</button>
             {available ? <AvailableIngredients search={searchInput}/> : null}
             <SelectedIngredients ref={selectedIngredients} />
